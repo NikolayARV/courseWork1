@@ -23,15 +23,19 @@ public class Main {
 
     public static void printListEmployees(Employee[] employees) {
 
-        for (Employee employee : employees) {
-            System.out.println(employee);
+        for (int i = 0; i < employees.length; i++) {
+            if (employees[i] != null)
+                System.out.println(employees[i]);
+            else continue;
         }
     }
 
     public static void calculateSum(Employee[] employees) {
         int sum = 0;
-        for (Employee employee : employees) {
-            sum = sum + employee.getSalary();
+        for (int i = 0; i < employees.length; i++) {
+            if (employees[i] != null)
+                sum = sum + employees[i].getSalary();
+            else continue;
         }
         System.out.println("Сумма затрат на зарплаты в месяц равна: " + sum + " рублей.");
     }
@@ -39,11 +43,14 @@ public class Main {
     public static void findMinSalary(Employee[] employees) {
         int min = employees[0].getSalary();
         String name = employees[0].getName();
-        for (Employee employee : employees) {
-            if (employee.getSalary() <= min)
-                min = employee.getSalary();
-            if (min == employee.getSalary())
-                name = employee.getName();
+        for (int i = 0; i < employees.length; i++) {
+            if (employees[i] != null) {
+            if (employees[i].getSalary() <= min)
+                min = employees[i].getSalary();
+            if (min == employees[i].getSalary())
+                name = employees[i].getName();
+            } else continue;
+
         }
         System.out.println("Сотрудник " + name + " получает минимальную зарплату "
                 + min + " рублей.");
@@ -53,11 +60,13 @@ public class Main {
     public static void findMaxSalary(Employee[] employees) {
         int max = employees[0].getSalary();
         String name = employees[0].getName();
-        for (Employee employee : employees) {
-            if (employee.getSalary() >= max)
-                max = employee.getSalary();
-            if (max == employee.getSalary())
-                name = employee.getName();
+        for (int i = 0; i < employees.length; i++) {
+            if (employees[i] != null) {
+                if (employees[i].getSalary() >= max)
+                    max = employees[i].getSalary();
+                if (max == employees[i].getSalary())
+                    name = employees[i].getName();
+            } else continue;
         }
         System.out.println("Сотрудник " + name + " получает максимальную зарплату " + max + " рублей");
     }
@@ -65,16 +74,18 @@ public class Main {
     public static void findAvrSalary(Employee[] employees) {
         float sum = 0.00f;
         float avr = 0.00f;
-        for (Employee employee : employees) {
-            sum = sum + employee.getSalary();
+        for (int i = 0; i < employees.length; i++) {
+            if (employees[i] != null)
+            sum = sum + employees[i].getSalary();
             avr = sum / employees.length;
         }
         System.out.println("Средняя зарплата " + avr + " рублей");
     }
 
     public static void printNameList(Employee[] employees) {
-        for (Employee employee : employees) {
-            System.out.println(employee.getName());
+        for (int i = 0; i < employees.length; i++) {
+            if (employees[i] != null)
+            System.out.println(employees[i].getName());
         }
     }
 

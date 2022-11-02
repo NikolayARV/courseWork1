@@ -2,19 +2,16 @@ public class Employee {
     private final String name;
     private char department;
     private int salary;
-    private int id;
-
+    private final int id;
+    public static int count = 1;
 
     public Employee(String name, char department, int salary) {
         this.name = name;
         this.department = department;
         this.salary = salary;
-        this.id=count;
-        count++;
+        this.id = count++;
 
     }
-    public static int count = 1;
-
 
     public int getId() {
         return id;
@@ -42,6 +39,23 @@ public class Employee {
 
     @Override
     public String toString() {
+
         return id + " Name:" + name + " Department:" + department + " Salary: " + salary;
     }
+
+    @Override
+    public boolean equals(Object other) {
+        if (this.getClass() != other.getClass()) {
+            return false;
+        }
+        Employee employee = (Employee) other;
+        return name.equals(((Employee) other).name);
+    }
+
+    @Override
+    public int hashCode() {
+
+        return java.util.Objects.hash(name);
+    }
 }
+
